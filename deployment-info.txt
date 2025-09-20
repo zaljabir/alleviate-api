@@ -1,0 +1,19 @@
+Deployment Date: Fri Sep 19 17:20:32 PDT 2025
+Instance ID: i-0224a8f9b8a98fba3
+Public IP: 54.198.22.93
+Private IP: 172.31.36.151
+Region: us-east-1
+Instance Type: t3.micro
+Spot Price: 0.01
+Key Name: alleviate-health-api-key
+Security Group: sg-0e33f2df244a30e41
+Subnet ID: subnet-01b889a0bad2969ba
+VPC ID: vpc-031e304874712a03e
+
+API Endpoints:
+- Health Check: http://54.198.22.93:3000/health
+- API Docs: http://54.198.22.93:3000/api-docs
+- Phone Update: http://54.198.22.93:3000/settings/phone
+
+SSH Access:
+ssh -i alleviate-health-api-key.pem ec2-user@54.198.22.93

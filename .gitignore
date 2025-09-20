@@ -78,6 +78,11 @@ playwright/.cache/
 # Docker
 .dockerignore
 
+# Temporary deployment files
+user-data.sh
+aws-deployment.yaml
+docker-compose.yml
+
 # IDE
 .vscode/
 .idea/
