@@ -257,7 +257,6 @@ app.post('/settings/phone', async (req, res) => {
     const page = await browser.newPage();
 
     await page.goto('https://platform.alleviatehealth.care/login');
-    await page.getByRole('textbox', { name: 'Email address' }).click();
     await page.getByRole('textbox', { name: 'Email address' }).fill(username);
     await page.getByRole('textbox', { name: 'Password' }).fill(password);
     
