@@ -35,9 +35,9 @@ print_error() {
 
 # Function to check if deployment info exists
 check_deployment_info() {
-    if [ ! -f "deployment-info.txt" ]; then
-        print_error "deployment-info.txt not found. Cannot determine instance details."
-        print_status "Please run this script from the same directory where you ran deploy-spot-instance.sh"
+    if [ ! -f "deployment/deployment-info.txt" ]; then
+        print_error "deployment/deployment-info.txt not found. Cannot determine instance details."
+        print_status "Please run this script from the project root directory"
         exit 1
     fi
 }
@@ -46,15 +46,15 @@ check_deployment_info() {
 read_deployment_info() {
     print_status "Reading deployment information..."
     
-    INSTANCE_IP=$(grep "Public IP:" deployment-info.txt | cut -d' ' -f3)
-    KEY_NAME=$(grep "Key Name:" deployment-info.txt | cut -d' ' -f3)
+    INSTANCE_IP=$(grep "Public IP:" deployment/deployment-info.txt | cut -d' ' -f3)
+    KEY_NAME=$(grep "Key Name:" deployment/deployment-info.txt | cut -d' ' -f3)
     
     if [ -z "$INSTANCE_IP" ]; then
-        print_error "Could not find Public IP in deployment-info.txt"
+        print_error "Could not find Public IP in deployment/deployment-info.txt"
         exit 1
     fi
     
-    KEY_FILE="${KEY_NAME}.pem"
+    KEY_FILE="deployment/${KEY_NAME}.pem"
     
     print_success "Deployment info loaded"
     print_status "Instance IP: $INSTANCE_IP"

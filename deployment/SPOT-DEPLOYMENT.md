@@ -350,7 +350,7 @@ ssh -i alleviate-health-api-key.pem ec2-user@YOUR_PUBLIC_IP 'cd /home/ec2-user/a
 1. **Check logs** first: `journalctl -u alleviate-api -f`
 2. **Verify instance status**: `aws ec2 describe-instances`
 3. **Test connectivity**: `curl http://YOUR_IP:3000/health`
-4. **Review deployment info**: `cat deployment-info.txt`
+4. **Review deployment info**: `cat deployment/deployment-info.txt`
 
 ### **Emergency Cleanup:**
 ```bash

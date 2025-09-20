@@ -113,11 +113,11 @@ create_key_pair() {
         --key-name $KEY_NAME \
         --query 'KeyMaterial' \
         --output text \
-        --region $REGION > ${KEY_NAME}.pem
+        --region $REGION > deployment/${KEY_NAME}.pem
     
-    chmod 400 ${KEY_NAME}.pem
+    chmod 400 deployment/${KEY_NAME}.pem
     
-    print_success "Key pair created: ${KEY_NAME}.pem"
+    print_success "Key pair created: deployment/${KEY_NAME}.pem"
 }
 
 # Function to create user data script
@@ -338,10 +338,10 @@ display_summary() {
     echo "  Phone Update: http://$PUBLIC_IP:3000/settings/phone"
     echo ""
     echo "🔧 Management Commands:"
-    echo "  SSH Access: ssh -i ${KEY_NAME}.pem ec2-user@$PUBLIC_IP"
-    echo "  Start API: ssh -i ${KEY_NAME}.pem ec2-user@$PUBLIC_IP './start-api.sh'"
-    echo "  Stop API: ssh -i ${KEY_NAME}.pem ec2-user@$PUBLIC_IP './stop-api.sh'"
-    echo "  View Logs: ssh -i ${KEY_NAME}.pem ec2-user@$PUBLIC_IP 'journalctl -u alleviate-api -f'"
+    echo "  SSH Access: ssh -i deployment/${KEY_NAME}.pem ec2-user@$PUBLIC_IP"
+    echo "  Start API: ssh -i deployment/${KEY_NAME}.pem ec2-user@$PUBLIC_IP './start-api.sh'"
+    echo "  Stop API: ssh -i deployment/${KEY_NAME}.pem ec2-user@$PUBLIC_IP './stop-api.sh'"
+    echo "  View Logs: ssh -i deployment/${KEY_NAME}.pem ec2-user@$PUBLIC_IP 'journalctl -u alleviate-api -f'"
     echo ""
     echo "💰 Cost Information:"
     echo "  Estimated cost: ~\$0.008/hour (\$0.08 for 10 hours/month)"
@@ -357,7 +357,7 @@ display_summary() {
 
 # Function to save deployment info
 save_deployment_info() {
-    cat > deployment-info.txt << EOF
+    cat > deployment/deployment-info.txt << EOF
 Deployment Date: $(date)
 Instance ID: $INSTANCE_ID
 Public IP: $PUBLIC_IP
@@ -376,10 +376,10 @@ API Endpoints:
 - Phone Update: http://$PUBLIC_IP:3000/settings/phone
 
 SSH Access:
-ssh -i ${KEY_NAME}.pem ec2-user@$PUBLIC_IP
+ssh -i deployment/${KEY_NAME}.pem ec2-user@$PUBLIC_IP
 EOF
 
-    print_success "Deployment info saved to deployment-info.txt"
+    print_success "Deployment info saved to deployment/deployment-info.txt"
 }
 
 # Main execution

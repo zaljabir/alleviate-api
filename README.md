@@ -165,6 +165,30 @@ All endpoints return appropriate HTTP status codes and error messages:
 - **node-fetch** - HTTP client for testing
 - **nodemon** - Development auto-reload (dev dependency)
 
+## 🚀 Deployment
+
+This project includes automated deployment scripts for AWS EC2 Spot instances. See the [`deployment/`](./deployment/) folder for:
+
+- **Deployment scripts** - Automated AWS deployment
+- **Update scripts** - Deploy code changes
+- **Cleanup scripts** - Remove AWS resources
+- **Documentation** - Complete deployment guides
+
+### Quick Deployment
+
+```bash
+# Deploy to AWS (run from project root)
+./deployment/deploy-spot-instance.sh
+
+# Update existing deployment
+./deployment/update-deployment.sh
+
+# Clean up resources
+./deployment/cleanup-spot-instance.sh
+```
+
+For detailed deployment instructions, see [`deployment/README.md`](./deployment/README.md).
+
 ## License
 
 MIT

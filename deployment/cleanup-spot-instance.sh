@@ -34,9 +34,9 @@ print_error() {
 
 # Function to check if deployment info exists
 check_deployment_info() {
-    if [ ! -f "deployment-info.txt" ]; then
-        print_error "deployment-info.txt not found. Cannot determine which resources to clean up."
-        print_status "Please run this script from the same directory where you ran deploy-spot-instance.sh"
+    if [ ! -f "deployment/deployment-info.txt" ]; then
+        print_error "deployment/deployment-info.txt not found. Cannot determine which resources to clean up."
+        print_status "Please run this script from the project root directory"
         exit 1
     fi
 }
@@ -45,13 +45,13 @@ check_deployment_info() {
 read_deployment_info() {
     print_status "Reading deployment information..."
     
-    INSTANCE_ID=$(grep "Instance ID:" deployment-info.txt | cut -d' ' -f3)
-    KEY_NAME=$(grep "Key Name:" deployment-info.txt | cut -d' ' -f3)
-    SECURITY_GROUP=$(grep "Security Group:" deployment-info.txt | cut -d' ' -f3)
-    PUBLIC_IP=$(grep "Public IP:" deployment-info.txt | cut -d' ' -f3)
+    INSTANCE_ID=$(grep "Instance ID:" deployment/deployment-info.txt | cut -d' ' -f3)
+    KEY_NAME=$(grep "Key Name:" deployment/deployment-info.txt | cut -d' ' -f3)
+    SECURITY_GROUP=$(grep "Security Group:" deployment/deployment-info.txt | cut -d' ' -f3)
+    PUBLIC_IP=$(grep "Public IP:" deployment/deployment-info.txt | cut -d' ' -f3)
     
     if [ -z "$INSTANCE_ID" ]; then
-        print_error "Could not find Instance ID in deployment-info.txt"
+        print_error "Could not find Instance ID in deployment/deployment-info.txt"
         exit 1
     fi
     
@@ -144,9 +144,9 @@ cleanup_local_files() {
     print_status "Cleaning up local files..."
     
     # Remove deployment info
-    if [ -f "deployment-info.txt" ]; then
-        rm -f deployment-info.txt
-        print_success "Removed deployment-info.txt"
+    if [ -f "deployment/deployment-info.txt" ]; then
+        rm -f deployment/deployment-info.txt
+        print_success "Removed deployment/deployment-info.txt"
     fi
     
     # Remove user data script
