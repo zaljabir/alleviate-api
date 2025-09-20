@@ -250,7 +250,7 @@ app.post('/settings/phone', async (req, res) => {
     }
 
     // Launch browser and create page
-    const browser = await chromium.launch({ headless: false }); // Set to true for headless mode
+    const browser = await chromium.launch({ headless: true }); // Set to true for headless mode
     const page = await browser.newPage();
 
     await page.goto('https://platform.alleviatehealth.care/login');
@@ -295,7 +295,7 @@ app.post('/settings/phone', async (req, res) => {
         await page.getByRole('button', { name: 'Save changes' }).click()
     ]);
 
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(3000); // this is just to be safe, and will slow it down a bit. We can look to remove later.
     await browser.close();
     
     // Success response

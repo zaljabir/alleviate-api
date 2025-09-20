@@ -7,7 +7,7 @@ set -e
 
 # Configuration
 REGION="us-east-1"
-INSTANCE_TYPE="t3.medium"
+INSTANCE_TYPE="t3.micro"
 SPOT_PRICE="0.01"
 KEY_NAME=""
 SECURITY_GROUP=""
@@ -63,7 +63,7 @@ get_default_network() {
         exit 1
     fi
     
-    SUBNET_ID=$(aws ec2 describe-subnets --filters "Name=vpc-id,Values=$VPC_ID" --query 'Subnets[0].SubnetId' --output text --region $REGION)
+    SUBNET_ID=$(aws ec2 describe-subnets --filters "Name=vpc-id,Values=$VPC_ID" "Name=availability-zone,Values=us-east-1a" --query 'Subnets[0].SubnetId' --output text --region $REGION)
     
     print_success "Using VPC: $VPC_ID, Subnet: $SUBNET_ID"
 }
