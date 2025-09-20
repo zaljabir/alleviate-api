@@ -250,7 +250,10 @@ app.post('/settings/phone', async (req, res) => {
     }
 
     // Launch browser and create page
-    const browser = await chromium.launch({ headless: true }); // Set to true for headless mode
+    const browser = await chromium.launch({ 
+      headless: true, // Set to true for headless mode
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
 
     await page.goto('https://platform.alleviatehealth.care/login');
