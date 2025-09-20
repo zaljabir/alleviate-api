@@ -75,6 +75,9 @@ test-results/
 playwright-report/
 playwright/.cache/
 
+# Docker
+.dockerignore
+
 # IDE
 .vscode/
 .idea/
