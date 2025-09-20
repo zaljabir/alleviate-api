@@ -9,8 +9,7 @@ This folder contains all deployment-related scripts and files for the Alleviate 
 - **`cleanup-spot-instance.sh`** - Clean up all AWS resources
 - **`deployment-info.txt`** - Generated file with deployment details (auto-created)
 - **`alleviate-health-api-key.pem`** - SSH private key (auto-created)
-- **`DEPLOYMENT.md`** - General deployment documentation
-- **`SPOT-DEPLOYMENT.md`** - EC2 Spot instance specific guide
+- **`SPOT-DEPLOYMENT.md`** - Complete EC2 Spot instance deployment guide
 
 ## 🚀 Quick Start
 
